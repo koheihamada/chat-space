@@ -5,31 +5,41 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|name|strings|null: false|
-|email|text|null: false|
-|password|string|null: false|
-
+|name|string|index:true, null: false|
+|email|text|null: false, unique: true|
+|groups_users_id|integer|null: false foreign_key: true|
 
 ### Association
-- has_many :messages
+- has_many :messages, :thorugh => groups_users
 - belongs_to :group
 
-## groupテーブル
+## Groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false foreign_key: true|
-|group_name|text|null: false|
+|group_user_id|integer|null: false foreign_key: true|
+|name|string|null: false|
 
 ### Association
-- has_many :users
+- has_many :users, :through  => groups_users
 
-## Messageテーブル
+## Groups_Usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|references|index: true, null: false|
+|group_id|references|index: true, null: false|
+
+
+### Association
+- belongs_to :users
+- belongs_to :groups
+
+
+## Messagesテーブル
 |coumn|Type|Options|
 |-----|----|-------|
-|body|text|null: false|
-|image|text|-|
-|date|timestamps|-|
+|body|text||
+|image|string||
 |user_id|integer|null: false foreign_key: true|
 
 ### Association
