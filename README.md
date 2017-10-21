@@ -7,40 +7,41 @@
 |------|----|-------|
 |name|string|index:true, null: false|
 |email|text|null: false, unique: true|
-|groups_users_id|integer|null: false foreign_key: true|
 
 ### Association
-- has_many :messages, :thorugh => groups_users
-- belongs_to :group
+- has_many :group_users
+- has_many :groups, thorugh: :groups_users
+- has_many :messages
 
 ## Groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|groups_users_id|integer|null: false foreign_key: true|
 |name|string|null: false|
 
 ### Association
-- has_many :users, :through  => groups_users
+- has_many :group_users
+- has_many :users, through: :groups_users
+- has_many :messages
 
 ## Groups_Usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|index: true, null: false|
-|group_id|references|index: true, null: false|
-
+|user|references|null: false, foreign_key: true|
+|group|references|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :users
-- belongs_to :groups
-
+- belongs_to :user
+- belongs_to :group
 
 ## Messagesテーブル
 |coumn|Type|Options|
 |-----|----|-------|
-|body|text||
+|body|string||
 |image|string||
-|user_id|integer|null: false foreign_key: true|
+|user|references|null: false foreign_key: true|
+|group|references|null: false foreign_key: true|
 
 ### Association
-- belongs_to :users
+- belongs_to :user
+- belongs_to :group
