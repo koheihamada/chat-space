@@ -17,7 +17,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|group_user_id|integer|null: false foreign_key: true|
+|groups_users_id|integer|null: false foreign_key: true|
 |name|string|null: false|
 
 ### Association
