@@ -1,0 +1,44 @@
+-# .block
+-#   .element
+-#     %p チャットが作成されました
+
+.contents
+  .left-content
+    .left-content__header
+      .padding
+        %p test
+        = link_to messages_path do
+          %i.fa.fa-cog
+        = link_to messages_path do
+          %i.fa.fa-pencil-square-o
+    .left-content__middle
+      .padding
+        %h1 なんとか
+        %h2 １番目
+        %h1 ややや
+        %h2 ２番目
+
+
+  .right-content
+    .right-content__header
+      .edit
+        %input.edit{type: :"submit", value: :"send", name: :"edit", value: :"Edit"}
+      %h1 sample グループ
+      %h2 namemeemem
+
+    .right-content__middle
+      .padding
+        %h1 nananan
+        %p naruho
+        %h1 nikoniko
+        %p papapapap
+
+
+    .right-content__bottom
+      .padding
+        .hako
+          %input.practice{name: :"hahaha", size: :"80", placeholder: :"a message"}
+            = link_to messages_path do
+              %i.fa.fa-picture-o
+          .send
+            %input.push{type: :"submit", value: :"send"}
