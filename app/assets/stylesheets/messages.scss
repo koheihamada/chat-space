@@ -23,7 +23,7 @@
       height: 100px;
       width: 300px;
       background-color: #253141;
-      .padding {
+      .sizing {
         padding: 35px 20px 0 20px;
         p {
           font-size: 16px;
@@ -44,7 +44,7 @@
       height: calc(100vh - 100px);
       padding: 0;
       background-color: #2f3e51;
-      .padding {
+      .sizing {
         padding: 20px 20px 0 20px;
         h1 {
           font-size: 15px;
@@ -95,7 +95,7 @@
     &__middle {
       height: calc(100vh - 100px);;
       background-color: #AAAAAA;
-      .padding {
+      .sizing {
         padding: 46px 40px 0 40px;
         h1 {
           font-size: 16px;
@@ -116,9 +116,9 @@
       width: calc(100vw - 300px);
       height: 90px;
       background-color: #ddd;
-      .padding {
+      .sizing {
         padding: 20px 40px 20px 40px;
-        .hako{
+        .box{
           background-color: #ddd;
           position: absolute;
           top: 20px;
