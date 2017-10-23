@@ -1,18 +1,15 @@
--# .block
--#   .element
--#     %p チャットが作成されました
 
 .contents
   .left-content
     .left-content__header
-      .sizing
+      .left-content__header--container
         %p test
         = link_to messages_path do
           %i.fa.fa-cog
         = link_to messages_path do
           %i.fa.fa-pencil-square-o
     .left-content__middle
-      .sizing
+      .left-content__middle--container
         %h1 なんとか
         %h2 １番目
         %h1 ややや
@@ -21,13 +18,13 @@
 
   .right-content
     .right-content__header
-      .edit
+      .right-content__header--edit
         %input.edit{type: :"submit", value: :"send", name: :"edit", value: :"Edit"}
       %h1 sample グループ
       %h2 namemeemem
 
     .right-content__middle
-      .sizing
+      .right-content__middle--container
         %h1 nananan
         %p naruho
         %h1 nikoniko
@@ -35,7 +32,7 @@
 
 
     .right-content__bottom
-      .sizing
+      .right-content__bottom--container
         .box
           %input.practice{name: :"hahaha", size: :"80", placeholder: :"a message"}
             = link_to messages_path do
