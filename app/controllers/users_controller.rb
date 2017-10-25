@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to root_path, notice: "アカウントを変更しました"
     else
-      redirect_to edit_user_path(current_user), notice: "何かが違います、なにかが"
+      render 'edit'
     end
   end
 
