@@ -1,8 +1,5 @@
 class UsersController < ApplicationController
 
-  def create
-    User.create(name: :name, email: :email, password: :password)
-  end
 
   def edit
   end
@@ -13,8 +10,6 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def show
-  end
 
 
   private
