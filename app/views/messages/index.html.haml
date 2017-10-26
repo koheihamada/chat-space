@@ -6,14 +6,15 @@
         %p test
         = link_to edit_user_path(current_user ) do
           %i.fa.fa-cog
-        = link_to messages_path do
+        = link_to new_group_path do
           %i.fa.fa-pencil-square-o
     .left-content__middle
       .left-content__middle--container
-        %h1 なんとか
-        %h2 １番目
-        %h1 ややや
-        %h2 ２番目
+        - current_user.groups.each do |f|
+          %ul
+            #{f.name}
+            %li
+              まだメッセージないよ
 
 
   .right-content
@@ -35,7 +36,7 @@
       .right-content__bottom--container
         .box
           %input.practice{name: :"hahaha", size: :"80", placeholder: :"a message"}
-            = link_to messages_path do
+            = link_to root_path do
               %i.fa.fa-picture-o
           .send
             %input.push{type: :"submit", value: :"send"}
