@@ -1,0 +1,8 @@
+.contents
+  .left-content
+    .left-content__header
+      .left-content__header--container
+        =render partial: "messages/index", locals: {current_user: current_user}
+    .left-content__middle
+      .left-content__middle--container
+        = render partial: "group", collection: current_user.groups, as: :group
