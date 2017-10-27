@@ -88,6 +88,7 @@
     &__middle {
       height: calc(100vh - 100px);;
       background-color: #AAAAAA;
+      overflow-x:scroll;
       &--container {
         padding: 46px 40px 0 40px;
         .text {
@@ -107,7 +108,8 @@
             padding-top: 10px;
             padding-bottom: 20px;
             h3 {
-              position: absolute;;
+              position: relative;
+              left: -57px;
             }
             p {
               font-size: 14px;
