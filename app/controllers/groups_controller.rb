@@ -1,14 +1,10 @@
 class GroupsController < ApplicationController
 
   def index
-    current_user.groups
   end
 
   def new
     @group = Group.new
-    @uesrs = User.all
-    # ユーザーの中から自分を消して、自動で保存させる。。。
-
   end
 
   def create
