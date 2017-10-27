@@ -3,40 +3,31 @@
   .left-content
     .left-content__header
       .left-content__header--container
-        %p test
-        = link_to edit_user_path(current_user ) do
-          %i.fa.fa-cog
-        = link_to new_group_path do
-          %i.fa.fa-pencil-square-o
+        =render partial: "index", locals: {current_user: current_user}
     .left-content__middle
       .left-content__middle--container
-        - current_user.groups.each do |f|
-          %ul
-            #{f.name}
-            %li
-              まだメッセージないよ
-
+        = render partial: "groups/group", collection: current_user.groups, as: :group
 
   .right-content
     .right-content__header
       .right-content__header--edit
         %input.edit{type: :"submit", value: :"send", name: :"edit", value: :"Edit"}
-      %h1 sample グループ
-      %h2 namemeemem
+      %h1
+        =@group.name
+      %h2
+        -@group.users.each do |user|
+          =user.name
 
     .right-content__middle
       .right-content__middle--container
-        %h1 nananan
-        %p naruho
-        %h1 nikoniko
-        %p papapapap
+        =render partial: "messages/message", collection: @group.messages, as: :message
 
-
-    .right-content__bottom
-      .right-content__bottom--container
-        .box
-          %input.practice{name: :"hahaha", size: :"80", placeholder: :"a message"}
-            = link_to root_path do
-              %i.fa.fa-picture-o
-          .send
-            %input.push{type: :"submit", value: :"send"}
+        .right-content__bottom
+          .right-content__bottom--container
+            .box
+              = form_for [@group, @message] do |f|
+                = f.text_field :body, placeholder: "a message", class: "practice"
+                = f.label :image  do
+                  %i.fa.fa-picture-o
+                  = f.file_field :image, class: "aa"
+                =f.submit "send", class: "send"
