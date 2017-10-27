@@ -11,8 +11,6 @@ def nanana
       'なにもありましせん'
     elsif messages.last.try(:image).blank?
       messages.last.try(:body)
-    elsif messages.last.try(:body).blank?
-      '写真があります'
     else
       '写真があります'
       end
