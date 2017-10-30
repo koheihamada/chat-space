@@ -64,4 +64,5 @@ gem 'factory_girl_rails', "~> 4.4.1"
 
 group :test do
   gem 'faker'
+  gem 'rails-controller-testing'
 end
