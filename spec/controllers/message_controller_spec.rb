@@ -6,21 +6,18 @@ describe MessagesController, type: :controller do
   let(:group) { create(:group) }
   # groupをcreateし、let内に格納
 
-
-
   context 'ログインしている場合' do
     describe 'GET #index' do
       before do
         login_user user
+        get :index, params: { group_id: group.id }
         # controller_macros.rb内のlogin_userメソッドを呼び出し
       end
       it "アクション内で定義しているインスタンス変数がある" do
-        get :index, params: { group_id: group.id }
         expect(assigns(:message)).to be_a_new(Message)
       end
 
       it ':indexテンプレートを表示すること' do
-        get :index, params: { group_id: group.id}
         expect(response).to render_template :index
       end
     end
@@ -28,8 +25,10 @@ describe MessagesController, type: :controller do
 
   context 'ログインしていない場合' do
     describe 'GET #index' do
+      before do
+        get :index, params: { group_id: group.id }
+      end
       it "意図したビューにリダイレクトできているか" do
-        get :index, params: {group_id: group.id}
         expect(response).to redirect_to user_session_path
       end
     end
