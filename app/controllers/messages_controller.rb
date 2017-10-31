@@ -10,11 +10,13 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages.new(message_params)
     if @message.save
-      redirect_to group_messages_path, notice: "メッセージを投稿しました "
+      respond_to do |format|
+        format.html { redirect_to group_messages_path, notice: "メッセージを投稿しました " }
+        format.json
+      end
     else
       render 'index'
     end
-
   end
 
   private
@@ -23,7 +25,7 @@ class MessagesController < ApplicationController
   end
 
   def group_initialize
-    @group = Group.order(created_at: :desc).find(params[:group_id])
+    @group = Group.find(params[:group_id])
   end
 
 
