@@ -19,15 +19,14 @@
           =user.name
 
     .right-content__middle
-      .right-content__middle--container
-        =render partial: "messages/message", collection: @group.messages, as: :message
+      =render partial: "messages/message", collection: @group.messages, as: :message
 
-        .right-content__bottom
-          .right-content__bottom--container
-            .box
-              = form_for [@group, @message] do |f|
-                = f.text_field :body, placeholder: "a message", class: "practice"
-                = f.label :image  do
-                  %i.fa.fa-picture-o
-                  = f.file_field :image, class: "aa"
-                =f.submit "send", class: "send"
+    .right-content__bottom
+      .right-content__bottom--container
+        .box
+          = form_for [@group, @message] do |f|
+            = f.text_field :body, placeholder: "a message", class: "practice"
+            = f.label :image  do
+              %i.fa.fa-picture-o
+              = f.file_field :image, class: "aa"
+            =f.submit "send", class: "send"
