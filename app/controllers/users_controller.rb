@@ -21,11 +21,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def search
-    @users = User.all
-  end
-
-
 
   private
   def user_params
