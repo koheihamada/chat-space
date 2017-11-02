@@ -6,6 +6,11 @@
     float: left;
     clear:both;
     height: 100%;
+    a:-webkit-any-link {
+      color: white;
+      cursor: auto;
+      text-decoration: none;
+      }
     &__header {
       height: 100px;
       width: 300px;
@@ -31,6 +36,7 @@
       height: calc(100vh - 100px);
       padding: 0;
       background-color: #2f3e51;
+      overflow: scroll;
       &--container {
         padding: 20px 20px 0 20px;
         a {
@@ -58,16 +64,23 @@
     &__header {
       height: 100px;
       border-bottom: solid #eeeeee;
+      a:-webkit-any-link {
+      color: -webkit-link;
+      cursor: auto;
+      text-decoration: none;
+      }
       &--edit {
         float: right;
         padding: 0 40px 0 0;
-        input.edit {
-          margin-top: 28px;
-          padding: 0 20px;
+        .edit {
+          p {
+            margin-top: 28px;
+          padding: 10px 20px;
           color: $dark_blue;
           border: solid $dark_blue 1px;
-          height: 42px;
           background-color: $white;
+          text-decoration: none;
+          }
         }
       }
       h1 {
