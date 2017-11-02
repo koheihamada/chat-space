@@ -11,7 +11,11 @@
   .right-content
     .right-content__header
       .right-content__header--edit
-        %input.edit{type: :"submit", value: :"send", name: :"edit", value: :"Edit"}
+        .edit
+          =link_to edit_group_path(@group.id) do
+            %p
+              Edit
+
       %h1
         =@group.name
       %h2

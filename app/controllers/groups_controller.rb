@@ -5,12 +5,13 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
-    @group.users << current_user
+
 
   end
 
   def create
-    @group = Group.new(group_params)
+    @group = current_user.groups.new(group_params)
+    # @group.user << current_user
     if @group.save
       redirect_to root_path, notice: "グループできました"
     else render 'new'
@@ -18,6 +19,16 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    @group = Group.find(params[:id])
+  end
+
+  def update
+    @group = Group.find(params[:id])
+    if @group.update(group_params)
+      redirect_to root_path, notice: "グループを変更しました"
+    else
+      render 'edit'
+    end
   end
 
   private
