@@ -15,7 +15,7 @@ $(document).on('turbolinks:load', function(){
     }
 
     function appendAdd(userid, name) {
-      var html = ` <div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
+      var html = ` <div class='chat-group-user clearfix js-chat-member' id='${userid}'>
                      <input name='group[user_ids][]' type='hidden' value='${userid}'>
                        <p class='chat-group-user__name'>
                          ${name}
@@ -48,7 +48,6 @@ $(document).on('turbolinks:load', function(){
       })
 
       .done(function(users){
-        console.table(users)
         $("#user-search-result").empty();
         if (users.length !== 0){
           users.forEach(function(user){
@@ -61,7 +60,7 @@ $(document).on('turbolinks:load', function(){
           }
         })
         .fail(function(user){
-          console.table(user)
+          alert('errorrrrrrrrr');
         })
       }
     });
