@@ -1,7 +1,7 @@
 $(document).on ('turbolinks:load', function(){
   function buildHTML(message){
     var sample =  message.image !== null ? ` <img alt="${message.image}" src="${message.image}" />` : ""
-    var html = `<div class= "text">
+    var html = `<div class= "text" id= "test" data-message-id="${message.id}">
                   <h1>
                     ${message.name}
                   </h1>
@@ -42,5 +42,23 @@ $(document).on ('turbolinks:load', function(){
       alert('errorrr');
       $('.send').attr('disabled', false);
     })
-   });
+  });
+  setInterval(automatic, 5000);
+  function automatic(){
+    var last_message =  $(".text").last().data("message-id")
+    var url = location.pathname ;
+    $.ajax({
+      url: url,
+      type: "GET",
+      data: {"last_message_id": last_message},
+      dataType: 'json'
+    })
+    .done(function(data){
+      for(message of data ){
+        var html = buildHTML(message);
+        $('.right-content__middle').append(html)
+      }
+    })
+  }
 });
+
