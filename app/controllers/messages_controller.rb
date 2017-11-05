@@ -2,7 +2,12 @@ class MessagesController < ApplicationController
   before_action :group_initialize, only:[:index, :create]
 
   def index
+    @messages = @group.messages.where("id > ?", params[:last_message_id])
     @message = Message.new
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
 
