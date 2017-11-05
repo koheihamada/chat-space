@@ -43,7 +43,7 @@ $(document).on ('turbolinks:load', function(){
       $('.send').attr('disabled', false);
     })
   });
-  setInterval(automatic, 5000);
+
   function automatic(){
     var last_message =  $(".text").last().data("message-id")
     var url = location.pathname ;
@@ -60,5 +60,6 @@ $(document).on ('turbolinks:load', function(){
       }
     })
   }
+  setInterval(automatic, 5000);
 });
 
